@@ -1,0 +1,27 @@
+// button specific mixins
+
+@import "../../shared/mixins/variant";
+
+@mixin make-button-size($name, $font-size, $spinner-size: inherit) {
+  @include variant('Button', 'size', $name) {
+    --button-font-size: #{$font-size};
+    --spinner-size: #{$spinner-size};
+    @content
+  }
+}
+
+@mixin make-button-variant($name, $bg, $color, $bg-hover: "", $color-hover: "") {
+  @include variant('Button', 'variant', $name) {
+    --button-bg: #{$bg};
+    --button-color: #{$color};
+
+    @if $bg-hover != "" or $color-hover != "" {
+      &:hover {
+        --button-bg: #{$bg-hover};
+        --button-color: #{$color-hover};
+      }
+    }
+
+    @content
+  }
+}

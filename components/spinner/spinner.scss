@@ -1,0 +1,35 @@
+.Spinner {
+  width: var(--spinner-size, 32px);
+  height: var(--spinner-size, 32px);
+  position: var(--spinner-position, relative);
+  &__circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    &::before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      width: 15%;
+      height: 15%;
+      background-color: var(--spinner-color, navy);
+      border-radius: 50%;
+      animation: Spinner__animation 1.2s infinite ease-in-out both;
+    }
+    @for $i from 1 through 12 {
+      &-#{$i} {
+        transform: rotate(30deg * $i);
+        &::before {
+          animation-delay: -1.1s + $i * 0.1s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes Spinner__animation {
+  0%, 39%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}

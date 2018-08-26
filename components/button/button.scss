@@ -1,0 +1,56 @@
+.Button {
+  font-family: var(--font-family, sans-serif);
+  font-size: var(--button-font-size, 1.3rem);
+  font-weight: var(--button-font-weight, 600);
+  line-height: var(--button-line-height, 1.2);
+  border-radius: var(--button-border-radius, 0.4em);
+  border: var(--button-border, none);
+  background: var(--button-bg, var(--main-color));
+  padding: var(--button-padding, 0.85em 1.5em);
+  color: var(--button-color, white);
+  text-transform: var(--button-text-transform, initial);
+  cursor: var(--button-cursor, pointer);
+  letter-spacing: var(--button-letter-spacing, initial);
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+
+  &:hover {
+    --button-bg: var(--button-hover-bg, blue);
+    --button-color: var(--button-hover-color, orange);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    animation: 0.14s opacity ease-in;
+    opacity: 0.75;
+  }
+
+  &[disabled] {
+    --button-bg: var(--button-disabled, grey);
+    --button-color: var(--utils-text-color, dark-grey);
+    --button-cursor: not-allowed;
+
+    .Button__Spinner {
+      --spinner-color: grey;
+    }
+  }
+
+  &__Spinner {
+    --spinner-position: absolute;
+    --spinner-size: 1.35em;
+
+    &-left {
+      left: calc(var(--spinner-size) * (-1.35));
+    }
+
+    &-right {
+      right: calc(var(--spinner-size) * (-1.35));
+    }
+  }
+}
