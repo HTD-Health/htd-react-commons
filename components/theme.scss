@@ -1,0 +1,32 @@
+// default theme
+
+@import "../shared/constants/colors";
+@import "../shared/constants/type";
+
+@import "./button/mixins";
+
+:root {
+  // Type
+  --font-family: #{$font-family};
+
+  // Colors
+  --main-color: #{$navy};
+}
+
+
+// Button
+/* sizes */
+@include make-button-size(1, $font-size-1) {
+  --button-padding: 10px 20px;
+}
+@include make-button-size(2, $font-size-2)
+@include make-button-size(3, $font-size-3)
+@include make-button-size(4, $font-size-4)
+
+/* variants */
+@include make-button-variant('secondary', black, orange, yellow, navy) {
+  --button-text-transform: uppercase;
+}
+@include make-button-variant('alert', yellow, navy)
+@include make-button-variant('error', red, white)
+@include make-button-variant('success', green, white)
